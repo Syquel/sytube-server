@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.ws.rs.core.MediaType;
 
 import de.syquel.sytube.server.common.data.AbstractStorageEntity;
 
@@ -12,16 +13,16 @@ public class AudioTrack extends AbstractStorageEntity {
 
 	@Basic
 	@NotBlank
-	private String mediaType;
+	private MediaType mediaType;
 
 	@ManyToOne
 	private Video video;
 
-	public String getMediaType() {
+	public MediaType getMediaType() {
 		return mediaType;
 	}
 
-	public void setMediaType(final String mediaType) {
+	public void setMediaType(final MediaType mediaType) {
 		this.mediaType = mediaType;
 	}
 
