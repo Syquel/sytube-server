@@ -1,22 +1,21 @@
 package de.syquel.sytube.server.video.data;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.ws.rs.core.MediaType;
 
 import de.syquel.sytube.server.common.data.AbstractStorageEntity;
+import de.syquel.sytube.server.common.data.MediaTypeAttributeConverter;
 
 @Entity
 public class VideoTrack extends AbstractStorageEntity {
 
 	@Basic
+	@Convert(converter = MediaTypeAttributeConverter.class)
 	@NotBlank
-	private String mediaType;
+	private MediaType mediaType;
 
 	@Basic
 	@Enumerated(EnumType.STRING)
@@ -38,11 +37,11 @@ public class VideoTrack extends AbstractStorageEntity {
 	@NotNull
 	private Video video;
 
-	public String getMediaType() {
+	public MediaType getMediaType() {
 		return mediaType;
 	}
 
-	public void setMediaType(final String mediaType) {
+	public void setMediaType(final MediaType mediaType) {
 		this.mediaType = mediaType;
 	}
 
