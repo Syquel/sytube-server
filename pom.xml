@@ -83,6 +83,18 @@
 			<artifactId>quarkus-hibernate-validator</artifactId>
 		</dependency>
 
+		<!-- Jaxb -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.sun.xml.bind</groupId>-->
+<!--			<artifactId>jaxb-impl</artifactId>-->
+<!--			<version>3.0.0</version>-->
+<!--			<scope>runtime</scope>-->
+<!--		</dependency>-->
+
 		<!-- Testing -->
 		<dependency>
 			<groupId>io.quarkus</groupId>
@@ -93,6 +105,27 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>com.evolvedbinary.maven.jvnet</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>0.15.0</version>
+				<executions>
+					<execution>
+						<id>dash-jaxb2-generation</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaDirectory>${basedir}/src/main/xsd/</schemaDirectory>
+					<extension>false</extension>
+					<enableIntrospection>true</enableIntrospection>
+					<markGenerated>true</markGenerated>
+					<noFileHeader>true</noFileHeader>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>${quarkus.platform.group-id}</groupId>
 				<artifactId>quarkus-maven-plugin</artifactId>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<bindings schemaLocation="DASH-MPD.xsd">
+		<schemaBindings>
+			<package name="de.syquel.sytube.server.dash.model"/>
+		</schemaBindings>
+		<bindings node="//xs:schema/xs:complexType[@name='SegmentTemplateType']/xs:complexContent/xs:extension[@base='MultipleSegmentBaseType']/xs:attribute[@name='initialization']">
+			<property name="initializationAttribute"/>
+		</bindings>
+		<bindings node="//xs:schema/xs:complexType[@name='SegmentTemplateType']/xs:complexContent/xs:extension[@base='MultipleSegmentBaseType']/xs:attribute[@name='bitstreamSwitching']">
+			<property name="bitstreamSwitchingAttribute"/>
+		</bindings>
+	</bindings>
+</bindings>
