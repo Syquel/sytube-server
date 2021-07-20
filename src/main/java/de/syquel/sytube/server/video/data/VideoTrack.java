@@ -30,8 +30,9 @@ public class VideoTrack extends AbstractStorageEntity {
 	private int bandwidth;
 
 	@Basic
+	@Convert(converter = MediaTypeAttributeConverter.class)
 	@NotBlank
-	private String codec;
+	private Codec codec;
 
 	@ManyToOne
 	@NotNull
@@ -51,6 +52,30 @@ public class VideoTrack extends AbstractStorageEntity {
 
 	public void setQuality(final Quality quality) {
 		this.quality = quality;
+	}
+
+	public String getFrameRate() {
+		return frameRate;
+	}
+
+	public void setFrameRate(final String frameRate) {
+		this.frameRate = frameRate;
+	}
+
+	public int getBandwidth() {
+		return bandwidth;
+	}
+
+	public void setBandwidth(int bandwidth) {
+		this.bandwidth = bandwidth;
+	}
+
+	public Codec getCodec() {
+		return codec;
+	}
+
+	public void setCodec(final Codec codec) {
+		this.codec = codec;
 	}
 
 	public Video getVideo() {
