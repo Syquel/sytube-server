@@ -4,6 +4,10 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
+## Create nginx Docker image
+
+Run `docker build -t nginx-sytube-server contrib/nginx/` and `docker run --rm --name nginx-sytube -p 8080:80 -v /path/to/files:/usr/share/nginx/html:ro nginx-sytube-server`
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
