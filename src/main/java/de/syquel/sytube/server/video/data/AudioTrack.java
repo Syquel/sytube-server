@@ -1,10 +1,10 @@
 package de.syquel.sytube.server.video.data;
 
+import javax.activation.MimeType;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
-import javax.ws.rs.core.MediaType;
 
 import de.syquel.sytube.server.common.data.AbstractStorageEntity;
 
@@ -13,16 +13,16 @@ public class AudioTrack extends AbstractStorageEntity {
 
 	@Basic
 	@NotBlank
-	private MediaType mediaType;
+	private MimeType mediaType;
 
 	@ManyToOne
 	private Video video;
 
-	public MediaType getMediaType() {
+	public MimeType getMediaType() {
 		return mediaType;
 	}
 
-	public void setMediaType(final MediaType mediaType) {
+	public void setMediaType(final MimeType mediaType) {
 		this.mediaType = mediaType;
 	}
 

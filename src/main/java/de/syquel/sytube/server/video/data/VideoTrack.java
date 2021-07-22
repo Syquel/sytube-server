@@ -1,20 +1,22 @@
 package de.syquel.sytube.server.video.data;
 
-import javax.persistence.*;
+import javax.activation.MimeType;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import javax.ws.rs.core.MediaType;
 
 import de.syquel.sytube.server.common.data.AbstractStorageEntity;
-import de.syquel.sytube.server.common.data.MediaTypeAttributeConverter;
 
 @Entity
 public class VideoTrack extends AbstractStorageEntity {
 
-	@Basic
-	@NotBlank
-	private MediaType mediaType;
+	@NotNull
+	private MimeType mediaType;
 
 	@Basic
 	@Enumerated(EnumType.STRING)
@@ -26,7 +28,7 @@ public class VideoTrack extends AbstractStorageEntity {
 
 	@Basic
 	@Positive
-	private int bandwidth;
+	private int bitrate;
 
 	@Basic
 	@NotBlank
@@ -36,11 +38,11 @@ public class VideoTrack extends AbstractStorageEntity {
 	@NotNull
 	private Video video;
 
-	public MediaType getMediaType() {
+	public MimeType getMediaType() {
 		return mediaType;
 	}
 
-	public void setMediaType(final MediaType mediaType) {
+	public void setMediaType(final MimeType mediaType) {
 		this.mediaType = mediaType;
 	}
 
@@ -50,6 +52,30 @@ public class VideoTrack extends AbstractStorageEntity {
 
 	public void setQuality(final Quality quality) {
 		this.quality = quality;
+	}
+
+	public String getFrameRate() {
+		return frameRate;
+	}
+
+	public void setFrameRate(final String frameRate) {
+		this.frameRate = frameRate;
+	}
+
+	public int getBitrate() {
+		return bitrate;
+	}
+
+	public void setBitrate(final int bandwidth) {
+		this.bitrate = bandwidth;
+	}
+
+	public String getCodec() {
+		return codec;
+	}
+
+	public void setCodec(final String codec) {
+		this.codec = codec;
 	}
 
 	public Video getVideo() {
