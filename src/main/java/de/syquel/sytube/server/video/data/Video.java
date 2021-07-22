@@ -1,24 +1,22 @@
 package de.syquel.sytube.server.video.data;
 
-import java.util.UUID;
-
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotBlank;
-
 import de.syquel.sytube.server.common.data.AbstractEntity;
+import io.quarkus.mongodb.panache.MongoEntity;
 
-@Entity
-public class Video extends AbstractEntity<UUID> {
+import java.util.List;
 
-	@Basic
-	@NotBlank
+@MongoEntity
+public class Video extends AbstractEntity {
+
 	private String title;
 
-	@Basic
-	@NotBlank
 	private String description;
+
+	private DashManifest dashManifest;
+
+	private List<VideoTrack> videoTracks;
+
+	private List<AudioTrack> audioTracks;
 
 	public String getTitle() {
 		return title;
@@ -36,4 +34,27 @@ public class Video extends AbstractEntity<UUID> {
 		this.description = description;
 	}
 
+	public DashManifest getDashManifest() {
+		return dashManifest;
+	}
+
+	public void setDashManifest(final DashManifest dashManifest) {
+		this.dashManifest = dashManifest;
+	}
+
+	public List<VideoTrack> getVideoTracks() {
+		return videoTracks;
+	}
+
+	public void setVideoTracks(final List<VideoTrack> videoTracks) {
+		this.videoTracks = videoTracks;
+	}
+
+	public List<AudioTrack> getAudioTracks() {
+		return audioTracks;
+	}
+
+	public void setAudioTracks(final List<AudioTrack> audioTracks) {
+		this.audioTracks = audioTracks;
+	}
 }

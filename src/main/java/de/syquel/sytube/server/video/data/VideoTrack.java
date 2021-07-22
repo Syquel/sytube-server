@@ -1,42 +1,21 @@
 package de.syquel.sytube.server.video.data;
 
-import javax.activation.MimeType;
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-
 import de.syquel.sytube.server.common.data.AbstractStorageEntity;
+import io.quarkus.mongodb.panache.MongoEntity;
 
-@Entity
+import javax.activation.MimeType;
+
 public class VideoTrack extends AbstractStorageEntity {
 
-	@NotNull
 	private MimeType mediaType;
 
-	@Basic
-	@Enumerated(EnumType.STRING)
 	private Quality quality;
 
-	@Basic
-	@NotBlank
 	private String frameRate;
 
-	@Basic
-	@Positive
 	private int bitrate;
 
-	@Basic
-	@NotBlank
 	private String codec;
-
-	@ManyToOne
-	@NotNull
-	private Video video;
 
 	public MimeType getMediaType() {
 		return mediaType;
@@ -76,14 +55,6 @@ public class VideoTrack extends AbstractStorageEntity {
 
 	public void setCodec(final String codec) {
 		this.codec = codec;
-	}
-
-	public Video getVideo() {
-		return video;
-	}
-
-	public void setVideo(final Video video) {
-		this.video = video;
 	}
 
 	public enum Quality {

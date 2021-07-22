@@ -2,52 +2,44 @@
 <databaseChangeLog
 		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+		xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd  http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-	<changeSet id="1" author="fboster">
-		<createTable tableName="video">
-			<column name="id" type="uuid" defaultValueComputed="${uuid_function}">
-				<constraints primaryKey="true" nullable="false"/>
-			</column>
-			<column name="version" type="bigint">
-				<constraints nullable="false"/>
-			</column>
-			<column name="title" type="varchar(255)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="description" type="varchar(255)">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
-		<createTable tableName="videotrack">
-			<column name="id" type="uuid" defaultValueComputed="${uuid_function}">
-				<constraints primaryKey="true" nullable="false"/>
-			</column>
-			<column name="version" type="bigint">
-				<constraints nullable="false"/>
-			</column>
-			<column name="blobname" type="varchar(255)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="mediatype" type="varchar(255)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="quality" type="varchar(255)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="framerate" type="varchar(255)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="bitrate" type="int">
-				<constraints nullable="false"/>
-			</column>
-			<column name="codec" type="varchar(255)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="video_id" type="uuid">
-				<constraints nullable="false" foreignKeyName="FK_videotrack_video" references="video(id)"/>
-			</column>
-		</createTable>
+	<changeSet id="1" author="cbartz">
+		<ext:createCollection collectionName="Video">
+			<ext:options>
+				{
+					validator: {
+						$jsonSchema: {
+							bsonType: "object",
+							required: ["title", "description", "dashManifest"],
+							properties: {
+								title: {
+									bsonType: "string",
+									description: "The Title"
+								},
+								description: {
+									bsonType: "string",
+									description: "The Description"
+								},
+								dashManifest: {
+									bsonType: "object",
+									required: ["blobName"],
+									properties: {
+										blobName: {
+											bsonType: "string",
+											description: "The blobName"
+										}
+									}
+								}
+							}
+						}
+					},
+					validationAction: "error",
+					validationLevel: "strict"
+				}
+			</ext:options>
+		</ext:createCollection>
 	</changeSet>
 
 </databaseChangeLog>

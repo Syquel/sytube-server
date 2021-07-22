@@ -1,13 +1,14 @@
 package de.syquel.sytube.server.video.repository;
 
-import java.util.UUID;
+import de.syquel.sytube.server.video.data.Video;
+import io.quarkus.mongodb.panache.PanacheMongoRepositoryBase;
+import io.quarkus.mongodb.panache.reactive.ReactivePanacheMongoRepositoryBase;
+import org.bson.types.ObjectId;
 
 import javax.enterprise.context.ApplicationScoped;
-
-import de.syquel.sytube.server.video.data.Video;
-import io.quarkus.hibernate.reactive.panache.PanacheRepositoryBase;
+import java.util.UUID;
 
 @ApplicationScoped
-public class VideoRepository implements PanacheRepositoryBase<Video, UUID> {
+public class VideoRepository implements ReactivePanacheMongoRepositoryBase<Video, ObjectId> {
 
 }

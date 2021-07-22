@@ -26,6 +26,7 @@
 		<quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
 		<quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
 		<quarkus.platform.version>2.0.2.Final</quarkus.platform.version>
+		<liquibase.mongodb.version>4.3.5</liquibase.mongodb.version>
 
 		<!-- Stub Properties -->
 		<maven.home/>
@@ -63,29 +64,16 @@
 		<!-- Database -->
 		<dependency>
 			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-hibernate-reactive-panache</artifactId>
+			<artifactId>quarkus-mongodb-panache</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-liquibase</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-reactive-pg-client</artifactId>
-		</dependency>
-		<dependency>
-			<!-- Liquibase JDBC Driver -->
-			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-jdbc-postgresql</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-hibernate-validator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-hibernate-orm-deployment</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.liquibase.ext</groupId>
+			<artifactId>liquibase-mongodb</artifactId>
+			<version>${liquibase.mongodb.version}</version>
 		</dependency>
 
 		<!-- Jaxb -->

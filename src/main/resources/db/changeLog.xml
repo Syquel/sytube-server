@@ -2,12 +2,11 @@
 <databaseChangeLog
 		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
-
-	<property name="uuid_function" value="gen_random_uuid()" dbms="postgresql"/>
+		xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd  http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
 	<preConditions>
-		<dbms type="postgresql"/>
+		<dbms type="mongodb"/>
 	</preConditions>
 
 	<include file="changeLog_001.xml" relativeToChangelogFile="true"/>
